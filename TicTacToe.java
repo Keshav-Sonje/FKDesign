@@ -1,5 +1,6 @@
 //Its the game between two Humans
-import java.util.Scanner;
+
+import java.util.*;
 public class TicTacToe {
 	public static void main(String[] args) {
 		TicTacToeMain t = new TicTacToeMain();
