@@ -43,7 +43,7 @@ class TicTacToeMain implements TTTMain {
 	int n;
 	int b[][] = new int[100][100];
 	public int Check(int i,int j,int player,int m){
-		if(i<0||i>m||j<0||j>m)
+		if(i<0||i>=m||j<0||j>=m)
 		{
 			System.out.println("Invalid Move");
 			return -1;
@@ -70,6 +70,32 @@ class TicTacToeMain implements TTTMain {
 	}
 	public int IsWinning(int m) {
 		int i,j;
+		if(m==4)
+		{
+			if((arr[0][0] + arr[0][1] + arr[0][2] + arr[0][3]==4)||
+				(arr[1][0] + arr[1][1] + arr[1][2] + arr[1][3]==4)||
+				(arr[2][0] + arr[2][1] + arr[2][2] + arr[2][3]==4)||
+				(arr[3][0] + arr[3][1] + arr[3][2] + arr[3][3]==4)||
+				(arr[0][0] + arr[1][0] + arr[2][0] + arr[3][0]==4)||
+				(arr[0][1] + arr[1][1] + arr[2][1] + arr[3][1]==4)||
+				(arr[0][2] + arr[1][2] + arr[2][2] + arr[3][2]==4)||
+				(arr[0][3] + arr[1][3] + arr[2][3] + arr[3][3]==4)||
+				(arr[0][0] + arr[1][1] + arr[2][2] + arr[3][3]==4)||
+				(arr[0][3] + arr[1][2] + arr[2][1] + arr[3][0]==4))
+					return 1;
+				else if((arr[0][0] + arr[0][1] + arr[0][2] + arr[0][3]==-4)||
+						(arr[1][0] + arr[1][1] + arr[1][2] + arr[1][3]==-4)||
+						(arr[2][0] + arr[2][1] + arr[2][2] + arr[2][3]==-4)||
+						(arr[3][0] + arr[3][1] + arr[3][2] + arr[3][3]==-4)||
+						(arr[0][0] + arr[1][0] + arr[2][0] + arr[3][0]==-4)||
+						(arr[0][1] + arr[1][1] + arr[2][1] + arr[3][1]==-4)||
+						(arr[0][2] + arr[1][2] + arr[2][2] + arr[3][2]==-4)||
+						(arr[0][3] + arr[1][3] + arr[2][3] + arr[3][3]==-4)||
+						(arr[0][0] + arr[1][1] + arr[2][2] + arr[3][3]==-4)||
+						(arr[0][3] + arr[1][2] + arr[2][1] + arr[3][0]==-4))
+					return -1;
+				return 0;
+		}
 		while(m>=1)
 		{
 			for(int i1=0;i1<(m/3);i1++)
