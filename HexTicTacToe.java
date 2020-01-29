@@ -60,36 +60,60 @@ class TicTacToeMain {
 		return 1;
 	}
 	int IsWinning(int i,int j) {
-		if((arr[i][j]+arr[i][j+2]+arr[i][j+4]+arr[i][j+6]==4)||
-			(arr[i][j]+arr[i][j-2]+arr[i][j+2]+arr[i][j+4]==4)||
-			(arr[i][j-4]+arr[i][j-2]+arr[i][j]+arr[i][j+2]==4)||
-			(arr[i][j-6]+arr[i][j-4]+arr[i][j-2]+arr[i][j]==4)||
-
-			(arr[i][j]+arr[i+1][j+1]+arr[i+2][j+2]+arr[i+3][j+3]==4)||
-			(arr[i-1][j-1]+arr[i][j]+arr[i+1][j+1]+arr[i+2][j+2]==4)||
-			(arr[i-2][j-2]+arr[i-1][j-1]+arr[i][j]+arr[i+1][j+1]==4)||
-			(arr[i-3][j-3]+arr[i-2][j-2]+arr[i-1][j-1]+arr[i][j]==4)||
-
-			(arr[i][j]+arr[i+1][j-1]+arr[i+2][j-2]+arr[i+3][j-3]==4)||
-			(arr[i-1][j+1]+arr[i][j]+arr[i+1][j-1]+arr[i+2][j-2]==4)||
-			(arr[i+1][j-1]+arr[i][j]+arr[i-1][j+1]+arr[i-2][j+2]==4)||
-			(arr[i-1][j+1]+arr[i-2][j+2]+arr[i-3][j+3]+arr[i][j]==4))
-			return 1;
-		else if((arr[i][j]+arr[i][j+2]+arr[i][j+4]+arr[i][j+6]==-4)||
-			(arr[i][j]+arr[i][j-2]+arr[i][j+2]+arr[i][j+4]==-4)||
-			(arr[i][j-4]+arr[i][j-2]+arr[i][j]+arr[i][j+2]==-4)||
-			(arr[i][j-6]+arr[i][j-4]+arr[i][j-2]+arr[i][j]==-4)||
-
-			(arr[i][j]+arr[i+1][j+1]+arr[i+2][j+2]+arr[i+3][j+3]==-4)||
-			(arr[i-1][j-1]+arr[i][j]+arr[i+1][j+1]+arr[i+2][j+2]==-4)||
-			(arr[i-2][j-2]+arr[i-1][j-1]+arr[i][j]+arr[i+1][j+1]==-4)||
-			(arr[i-3][j-3]+arr[i-2][j-2]+arr[i-1][j-1]+arr[i][j]==-4)||
-
-			(arr[i][j]+arr[i+1][j-1]+arr[i+2][j-2]+arr[i+3][j-3]==-4)||
-			(arr[i-1][j+1]+arr[i][j]+arr[i+1][j-1]+arr[i+2][j-2]==-4)||
-			(arr[i+1][j-1]+arr[i][j]+arr[i-1][j+1]+arr[i-2][j+2]==-4)||
-			(arr[i-1][j+1]+arr[i-2][j+2]+arr[i-3][j+3]+arr[i][j]==-4))
-			return -1;
+		int sum=0;
+		int var1,var2;
+		var1=0;
+		var2=0;
+		for(int k1=1;k1<=4;k1++)
+		{
+			sum=0;
+			for(int k=0;k<4;k++)
+			{
+				sum+=arr[i+var1][j+var2];
+				if(sum==4)
+					return 1;
+				if(sum==-4)
+					return -1;
+				var2=var2+2;
+			}
+			var2=-k1*2;
+		}
+		var1=0;
+		var2=0;
+		for(int k1=1;k1<=4;k1++)
+		{
+			sum=0;
+			for(int k=0;k<4;k++)
+			{
+				sum+=arr[i+var1][j+var2];
+				if(sum==4)
+					return 1;
+				if(sum==-4)
+					return -1;
+				var2=var2+1;
+				var1=var1+1;
+			}
+			var2=-k1;
+			var1=-k1;
+		}
+		var1=0;
+		var2=0;
+		for(int k1=1;k1<=4;k1++)
+		{
+			sum=0;
+			for(int k=0;k<4;k++)
+			{
+				sum+=arr[i+var1][j+var2];
+				if(sum==4)
+					return 1;
+				if(sum==-4)
+					return -1;
+				var2=var2-1;
+				var1=var1+1;
+			}
+			var2=k1;
+			var1=-k1;
+		}
 		return 0;
 	}
 	public void ShowGameStatus(int m){
